@@ -1,4 +1,9 @@
-
+"""
+Nombre: SistemaDeReservación
+Entradas:No posee entradas
+Salidas: retorna el menú principal
+Restriciones:No posee restricciones
+"""
 #2.
 def SistemaDeReservación():
     print("\n\t\tSistema de reservación de boletos")
@@ -14,6 +19,13 @@ def SistemaDeReservación():
         return print("\n\tHasta pronto")
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
+#-----------------------------------------------------------------------------------------------------------------
+"""
+Nombre: menu2
+Entradas: No posee entradas
+Salidas: retorna el menú administrativo
+Restricciones:No posee restricciones
+"""
 #3.
 def menu2():
     print("\n\tMenú Administrativo:")
@@ -40,6 +52,13 @@ def menu2():
         return SistemaDeReservación()
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
+#--------------------------------------------------------------------------------------------------------------
+"""
+Nombre: menu3
+Entradas: No posee entradas
+Salidas: retorna el menú general
+Restricciones:No posee restricciones
+"""        
 #4.
 def menu3():
     print("\n\tMenú General")
@@ -60,10 +79,16 @@ def menu3():
         return SistemaDeReservación()
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
-#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------
+"""
+Nombre: GestionEmpresas
+Entradas: No posee entradas
+Salidas: retorna el menú de gestión de empresas
+Restricciones:No posee restricciones
+"""
 #3.1
 def GestionEmpresas():
-    print("\n\t1 - Incluir empresa\n\n\t2 - Eliminar empresa\n\n\t3 - Modificar empresas\n\n\t4 - Mostrar empresas\n\n\t5 - Retoranar ")
+    print("\n\t1 - Incluir empresa\n\n\t2 - Eliminar empresa\n\n\t3 - Modificar empresa\n\n\t4 - Mostrar empresas\n\n\t5 - Retoranar ")
     
     op = input("\n\t>>>>>Seleccione una de las siguientes opciones:")
 
@@ -80,9 +105,13 @@ def GestionEmpresas():
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
         return GestionEmpresas()
-
-#-------------------------------------------------------------------------------------
-
+#------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: IncluirEmpresa
+Entradas: No posee entradas
+Salidas: crea el archivo de texto "Información de la empresa" y almacena los datos de la empresa
+Restricciones:La cédula jurídica debe tener 10 dígitos
+"""
 def IncluirEmpresa():
     print("\n\t\tInformación de la empresa")
     Archivo = "Información de la empresa.txt"
@@ -99,9 +128,14 @@ def IncluirEmpresa():
     Archivo2.write("Ubicación de la empresa:"+Ubicacion+"\n")
     Archivo2.write("..............................."+"\n")
     Archivo2.close()
-    print ("\n\t\t>>>>>La empresa ha sido agregada<<<<<")#
-
-#-----------------------------------------------------------------------------------------
+    print ("\n\t\t>>>>>La empresa ha sido agregada<<<<<")
+#--------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: EliminarEmpresa
+Entradas: No posee entradas
+Salidas: al dígitar la cédula jurídica se eliminarán los datos almacenados de la empresa
+Restricciones:No posee restricciones
+"""
 def EliminarEmpresa():
     Cedula = input("\n\tDígite el número de cédula jurídica:")
     Almacen = open("Información de la empresa.txt")
@@ -120,7 +154,12 @@ def EliminarEmpresa():
         print("\n\t>>>>>La empresa no existe<<<<<")
         print("\n")
         SistemaDeReservación()
-
+"""
+Nombre: EliminarEmpresa_aux
+Entradas: Borrar,ContarLineas,contador
+Salidas:
+Restricciones:
+"""
 def EliminarEmpresa_aux(Borrar,ContarLineas,contador):
     if contador == 3:
         return TransformarString(Borrar)
@@ -128,7 +167,12 @@ def EliminarEmpresa_aux(Borrar,ContarLineas,contador):
         print(Borrar[ContarLineas].rstrip())
         Borrar.pop(ContarLineas)
         return EliminarEmpresa_aux(Borrar,ContarLineas,contador+1)
-
+"""
+Nombre: TransformarString
+Entradas: Borrar
+Salidas:
+Restricciones:
+"""
 def TransformarString(Borrar):
     if isinstance(Borrar,list):
         string = ""
@@ -137,8 +181,13 @@ def TransformarString(Borrar):
         return string
     else:
         print("")
-
-#----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: ModificarEmpresa
+Entradas: No posee entradas
+Salidas: al dígitar  el número de cédula jurídica se podrá modificar los datos almacenados de la empresa
+Restricciones:No posee restricciones
+"""
 def ModificarEmpresa():
     Cedula = input("\n\tDígite el número de cédula jurídica:")
     Abrir = open("Información de la empresa.txt")
@@ -151,14 +200,24 @@ def ModificarEmpresa():
         Abrir = open("Información de la empresa.txt","w")
         Abrir.write(TransformarString_aux(EmpresaNueva))
         Abrir.close()
-
+"""
+Nombre: Empresa2_aux
+Entradas: lista,Indice,contador
+Salidas:
+Restricciones:
+"""
 def Empresa2_aux(lista,Indice,contador):
     if contador == 3:
         print("") 
     else:
         print(lista[Indice].rstrip())
         return Empresa2_aux(lista,Indice+1,contador+1)
-
+"""
+Nombre: Empresa3_aux
+Entradas: Dato,Indice,contador
+Salidas:
+Restricciones:
+"""
 def Empresa3_aux(Dato,Indice,contador):
     if contador > 5:
         return Dato
@@ -176,7 +235,12 @@ def Empresa3_aux(Dato,Indice,contador):
             Dato2 = input("\n\tLugar de trabajo:")#
             Dato[Indice]=Dato2 + "\n"                 #
             return Contacto3_aux(Dato,Indice+1,contador+1)#
-
+"""
+Nombre: TransformarString_aux
+Entradas: dato
+Salidas:
+Restricciones:
+"""
 def TransformarString_aux(dato):
     if isinstance(dato,list):
         string = ""
@@ -185,19 +249,28 @@ def TransformarString_aux(dato):
         return string
     else:
         print("")
-        
-#-----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: MostrarEmpresas
+Entradas: No posee entradas
+Salidas: abre el archivo de texto "Información de la empresa" y muestra su contenido
+Restricciones:No posee restricciones
+"""
 def MostrarEmpresas():
     Abrir = open("Información de la empresa.txt","r")
     for Agregar in Abrir:
         print(Agregar)
     Abrir.close()
-
-   
-#-----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: GestionTransporte
+Entradas: No posee entradas
+Salidas: retorna el menú de gestión de transporte por empresa
+Restricciones:No posee restricciones
+"""
 #3.2
 def GestionTransporte():
-    print("\n\t1 - Incluir transporte\n\n\t2 - Eliminar transporte\n\n\t3 - Modificar transportes\n\n\t4 - Mostrar transportes\n\n\t5 - Retornar")
+    print("\n\t1 - Incluir transporte\n\n\t2 - Eliminar transporte\n\n\t3 - Modificar transporte\n\n\t4 - Mostrar transportes\n\n\t5 - Retornar")
     
     op = input("\n\t>>>>>Seleccione una de las siguientes opciones:")
     
@@ -206,7 +279,7 @@ def GestionTransporte():
     elif(op == "2"):
         return EliminarTransporte()
     elif(op == "3"):
-        return ModificarTransportes()
+        return ModificarTransporte()
     elif(op == "4"):
         return MostrarTransportes()
     elif(op == "5"):
@@ -214,7 +287,13 @@ def GestionTransporte():
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
         return GestionTransporte()
-#----------------------------------------------------------------------------------------       
+#--------------------------------------------------------------------------------------------------------------------       
+"""
+Nombre: IncluirTransporte
+Entradas: No posee entradas
+Salidas: crea el archivo de texto "Información del transporte" y almacena los datos del transporte
+Restricciones:no posee restricciones
+"""
 def IncluirTransporte():
     print("\n\t\tInformación del transporte")
     Archivo = "Información del transporte.txt"
@@ -242,7 +321,13 @@ def IncluirTransporte():
     Archivo2.close()
     print ("\n\t\t>>>>>El transporte ha sido almacenado<<<<<")
 
-#-----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: EliminarTransporte
+Entradas: No posee entradas
+Salidas: al escribir la placa del transporte se podrá eliminar los datos almacenados del transporte
+Restricciones: No posee restricciones
+"""
 def EliminarTransporte():
     Placa = input("\n\tEscriba la placa del transporte:")
     Almacen = open("Información del transporte.txt")
@@ -261,7 +346,12 @@ def EliminarTransporte():
         print("\n\t>>>>>La empresa no existe<<<<<")
         print("\n")
         SistemaDeReservación()
-
+"""
+Nombre: EliminarTransporte_aux
+Entradas: Borrar,ContarLineas,contador
+Salidas:
+Restricciones:
+"""
 def EliminarTransporte_aux(Borrar,ContarLineas,contador):
     if contador == 8:
         return TransformarString(Borrar)
@@ -269,9 +359,14 @@ def EliminarTransporte_aux(Borrar,ContarLineas,contador):
         print(Borrar[ContarLineas].rstrip())
         Borrar.pop(ContarLineas)
         return EliminarEmpresa_aux(Borrar,ContarLineas,contador+1)
-
-#-----------------------------------------------------------------------------------------
-def ModificarTransportes():
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: ModificarTransporte
+Entradas: No posee entradas
+Salidas: al escribir la placa del transporte se podrá modificar los datos almacenados del transporte
+Restricciones: No posee restricciones
+"""
+def ModificarTransporte():
     Placa = input("\n\tEscriba la placa del transporte:")
     Abrir = open("Información del transporte.txt")
     transporte = Abrir.readlines()
@@ -283,14 +378,24 @@ def ModificarTransportes():
         Abrir = open("Información del transporte.txt","w")
         Abrir.write(TransformarString_aux(TransporteNuevo))
         Abrir.close()
-
+"""
+Nombre: Transporte2_aux
+Entradas: lista,Indice,contador
+Salidas:
+Restricciones:
+"""
 def Transporte2_aux(lista,Indice,contador):
     if contador == 8:
         print("") 
     else:
         print(lista[Indice].rstrip())
         return Transporte2_aux(lista,Indice+1,contador+1)
-
+"""
+Nombre: Transporte3_aux
+Entradas: Dato,Indice,contador
+Salidas:
+Restricciones:
+"""
 def Transporte3_aux(Dato,Indice,contador):
     if contador > 5:
         return Dato
@@ -323,19 +428,28 @@ def Transporte3_aux(Dato,Indice,contador):
             Dato2 = input("\n\tCantidad de asientos clase económica:")
             Dato[Indice]=Dato2 + "\n"
             return Transporte3_aux(Dato,Indice+1,contador+1)
-
-#----------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: MostrarTransportes
+Entradas: No posee entradas
+Salidas: abre el archivo de texto "Información del transporte" y muestra su contenido
+Restricciones:No posee restricciones
+"""
 def MostrarTransportes():
     Abrir = open("Información del transporte.txt","r")
     for Agregar in Abrir:
         print(Agregar)
     Abrir.close()
-
-    
-#-----------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: GestionViaje
+Entradas: No posee entradas
+Salidas: retorna el menú de gestión de viaje
+Restricciones:No posee restricciones
+"""
 #3.3
 def GestionViaje():
-    print("\n\t1 - Incluir viaje\n\n\t2 - Eliminar viaje\n\n\t3 - Modificar viajes\n\n\t4 - Mostrar viajes\n\n\t5 - Retornar")
+    print("\n\t1 - Incluir viaje\n\n\t2 - Eliminar viaje\n\n\t3 - Modificar viaje\n\n\t4 - Mostrar viajes\n\n\t5 - Retornar")
     
     op = input("\n\t>>>>>Seleccione una de las siguientes opciones:")
     
@@ -344,7 +458,7 @@ def GestionViaje():
     elif(op == "2"):
         return EliminarViaje()
     elif(op == "3"):
-        return ModificarViajes()
+        return ModificarViaje()
     elif(op == "4"):
         return MostrarViajes()
     elif(op == "5"):
@@ -352,7 +466,13 @@ def GestionViaje():
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
         return GestionViaje()
-#---------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: IncluirViaje
+Entradas: No posee entradas
+Salidas: crea el archivo de texto "Información por viaje" y almacena los datos del viaje
+Restricciones: no posee restricciones
+"""
 def IncluirViaje():
     print("\n\t\tInformación por viaje")
     Archivo = "Información por viaje.txt"
@@ -378,8 +498,13 @@ def IncluirViaje():
     Archivo2.write("......................................"+"\n")
     Archivo2.close()
     print ("\n\t\t>>>>>El transporte ha sido almacenado<<<<<")
-
-#----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: EliminarViaje
+Entradas: No posee entradas
+Salidas: al escribir el número del viaje se eliminarán los datos almacenados de la empresa
+Restricciones:No posee restricciones
+"""
 def EliminarViaje():
     NumeroViaje = input("\n\tEscriba el número del viaje:")
     Almacen = open("Información por viaje.txt")
@@ -391,50 +516,145 @@ def EliminarViaje():
         Abrir = open("Información por viaje.txt","w")
         Abrir.write(BorrarLineas)
         Abrir.close()
-        print("\n\t>>>>>El transporte ha sido eliminado<<<<<")
+        print("\n\t>>>>>El viaje ha sido eliminado<<<<<")
         print("\n")
         SistemaDeReservación()
     else:
-        print("\n\t>>>>>La empresa no existe<<<<<")
+        print("\n\t>>>>>El viaje no existe<<<<<")
         print("\n")
         SistemaDeReservación()
-
+"""
+Nombre: EliminarViaje_aux
+Entradas: Borrar,ContarLineas,contador
+Salidas:
+Restricciones:
+"""
 def EliminarViaje_aux(Borrar,ContarLineas,contador):
     if contador == 9:
         return TransformarString(Borrar)
     else:
         print(Borrar[ContarLineas].rstrip())
         Borrar.pop(ContarLineas)
-        return EliminarEmpresa_aux(Borrar,ContarLineas,contador+1)
-
-#-----------------------------------------------------------------------------------------
-#def ModificarViajes():
-#-----------------------------------------------------------------------------------------
+        return EliminarViaje_aux(Borrar,ContarLineas,contador+1)
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: ModificarViaje
+Entradas: No posee entradas
+Salidas: al escribir el número del viaje se podrá modificar los datos almacenados del viaje
+Restricciones: No posee restricciones
+"""
+def ModificarViaje():
+    NumeroViaje  = input("\n\tEscriba el número del viaje:")
+    Abrir = open("Información por viaje.txt")
+    viaje = Abrir.readlines()
+    Abrir.close()
+    if (NumeroViaje  + "\n") in viaje:
+        Indice = viaje.index(NumeroViaje+ "\n")
+        Viaje2_aux(viaje,Indice,0)
+        ViajeNuevo = Viaje3_aux(viaje,Indice+1,0)
+        Abrir = open("Información por viaje.txt","w")
+        Abrir.write(TransformarString_aux(ViajeNuevo))
+        Abrir.close()
+"""
+Nombre: Viaje2_aux
+Entradas: lista,Indice,contador
+Salidas:
+Restricciones:
+"""
+def Viaje2_aux(lista,Indice,contador):
+    if contador == 9:
+        print("") 
+    else:
+        print(lista[Indice].rstrip())
+        return Viaje2_aux(lista,Indice+1,contador+1)
+"""
+Nombre: Viaje3_aux
+Entradas: Dato,Indice,contador
+Salidas:
+Restricciones:
+"""
+def Viaje3_aux(Dato,Indice,contador):
+    if contador > 5:
+        return Dato
+    elif contador == 1:
+        Dato2 = input("\n\tCiudad de salida:")
+        Dato[Indice]=Dato2 + "\n"
+        return Viaje3_aux(Dato,Indice+1,contador+1)
+    else:
+        if contador == 2:
+            Dato2 = input("\n\tFecha y hora de salida:")
+            Dato[Indice]=Dato2 + "\n"
+            return Viaje3_aux(Dato,Indice+1,contador+1)
+        elif contador == 3:
+            Dato2 = input("\n\tCiudad de llegada:")
+            Dato[Indice]=Dato2 + "\n"
+            return Viaje3_aux(Dato,Indice+1,contador+1)
+        elif contador == 4:
+            Dato2 = input("\n\tFecha y hora de llegada:")
+            Dato[Indice]=Dato2 + "\n"
+            return Viaje3_aux(Dato,Indice+1,contador+1)
+        elif contador == 5:
+            Dato2 = input("\n\tEmpresa y transporte:")
+            Dato[Indice]=Dato2 + "\n"
+            return Viaje3_aux(Dato,Indice+1,contador+1)
+        elif contador == 6: 
+            Dato2 = input("\n\tMonto de asiento VIP:")
+            Dato[Indice]=Dato2 + "\n"
+            return Viaje3_aux(Dato,Indice+1,contador+1)
+        elif contador == 7: 
+            Dato2 = input("\n\tMonto de asiento normal:")
+            Dato[Indice]=Dato2 + "\n"
+            return Viaje3_aux(Dato,Indice+1,contador+1)
+        else:
+            Dato2 = input("\n\tMonto de asiento económico")
+            Dato[Indice]=Dato2 + "\n"
+            return Viaje3_aux(Dato,Indice+1,contador+1)
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre: MostrarViajes
+Entradas: No posee entradas
+Salidas: abre el archivo de texto "Información por viaje" y muestra su contenido
+Restricciones:No posee restricciones
+"""
 def MostrarViajes():
     Abrir = open("Información por viaje.txt","r")
     for Agregar in Abrir:
         print(Agregar)
     Abrir.close()
-
-   
-#-----------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre:
+Entradas:
+Salidas:
+Restricciones:
+"""
 #3.4
 #def ConsultarHistorial():
-
-#------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre:
+Entradas:
+Salidas:
+Restricciones:
+"""
 #3.5
 #def Estadisticas():
-#-------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+"""
+Nombre:
+Entradas:
+Salidas:
+Restricciones:
 """
 #4.1
-def Consulta():
-  
+#def Consulta():
+#---------------------------------------------------------------------------------------------------------------------
 """
-#--------------------------------
+Nombre:
+Entradas:
+Salidas:
+Restricciones:
+"""
 #4.2
 #def Reservacion():
-
-
-
 SistemaDeReservación()
-    
