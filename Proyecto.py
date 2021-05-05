@@ -153,6 +153,7 @@ Restricciones:No posee restricciones
 """
 def EliminarEmpresa():
     Cedula = input("\n\tDígite el número de cédula jurídica:")
+    print("\n")
     Almacen = open("Información de la empresa.txt")
     Borrar = Almacen.readlines()
     if("Cédula júridica:"+Cedula+ "\n")in Borrar:
@@ -177,7 +178,7 @@ def EliminarEmpresa():
             print("\n")
             GestionEmpresas()
     else:
-        print("\n\t>>>>>La empresa no existe<<<<<")
+        print("\n\t\t>>>>>La empresa no existe<<<<<")
         print("\n")
         GestionEmpresas()
 """
@@ -226,7 +227,7 @@ def ModificarEmpresa():
         Abrir = open("Información de la empresa.txt","w")
         Abrir.write(TransformarString_aux(EmpresaNueva))
         Abrir.close()
-        print("\n\t>>>>>La empresa ha sido modificada<<<<<")
+        print("\n\t\t>>>>>La empresa ha sido modificada<<<<<")
         print("\n")
         GestionEmpresas()
 """
@@ -281,6 +282,7 @@ Salidas: abre el archivo de texto "Información de la empresa" y muestra su cont
 Restricciones:No posee restricciones
 """
 def MostrarEmpresas():
+    print("\n")
     Abrir = open("Información de la empresa.txt","r")
     Abrir2 = Abrir.read()
     print(Abrir2)
@@ -328,7 +330,7 @@ def IncluirTransporte():
     Archivo3 = open(Archivo)
     Comprobar = Archivo3.readlines()
     if("Placa del transporte:"+Placa+"\n") in Comprobar:
-        print("\n\t>>>>>La matricula ya existe<<<<<")
+        print("\n\t\t>>>>>La matricula ya existe<<<<<")
         return IncluirTransporte()
     else:
         Marca = input("\n\tEscriba la marca del transporte:")
@@ -336,7 +338,7 @@ def IncluirTransporte():
         Año = input("\n\tDígite el año del transporte:")
         Archivo3 = open("Información de la empresa.txt")
         Informacion = Archivo3.read()
-        print("\n\t"+Informacion)
+        print("\n"+Informacion)
         Empresa = input("\n\tEscriba el nombre de la empresa:")
         CantidadAsientosVIP = input("\n\tCantidad de asientos clase VIP:")
         CantidadAsientosNormal = input("\n\tCantidad de asientos clase normal:")
@@ -364,6 +366,7 @@ Restricciones: No posee restricciones
 """
 def EliminarTransporte():
     Placa = input("\n\tEscriba la placa del transporte:")
+    print("\n")
     Almacen = open("Información del transporte.txt")
     Borrar = Almacen.readlines()
     if("Placa del transporte:"+Placa+"\n")in Borrar:
@@ -379,16 +382,16 @@ def EliminarTransporte():
             else:
                 return GestionTransporte()
         else:
-            BorrarLineas = EliminarTransporte_aux(Borrar,ContarLineas,0)
+            BorrarLineas = EliminarTransporte_aux(Borrar,ContarLineas,-5)
             Almacen.close()
             Abrir = open("Información del transporte.txt","w")
             Abrir.write(BorrarLineas)
             Abrir.close()
-            print("\n\t>>>>>El transporte ha sido eliminado<<<<<")
+            print("\n\t\t>>>>>El transporte ha sido eliminado<<<<<")
             print ("\n")
             GestionTransporte()
     else:
-        print("\n\t>>>>>El transporte no existe<<<<<")
+        print("\n\t\t>>>>>El transporte no existe<<<<<")
         print ("\n")
         GestionTransporte()
 """
@@ -398,7 +401,7 @@ Salidas:elimina el indice
 Restricciones:no posee
 """
 def EliminarTransporte_aux(Borrar,ContarLineas,contador):
-    if contador > 8:
+    if contador == 5:
         return TransformarString(Borrar)
     else:
         print(Borrar[ContarLineas].rstrip())
@@ -423,7 +426,7 @@ def ModificarTransporte():
         Abrir = open("Información del transporte.txt","w")
         Abrir.write(TransformarString_aux(TransporteNuevo))
         Abrir.close()
-        print("\n\t>>>>>El transporte ha sido modificado<<<<<")
+        print("\n\t\t>>>>>El transporte ha sido modificado<<<<<")
         print ("\n")
         GestionTransporte()
 """
@@ -461,6 +464,9 @@ def Transporte3_aux(Dato,Indice,contador):
             Dato[Indice]=("Año del transporte:"+Dato2+ "\n")
             return Transporte3_aux(Dato,Indice+1,contador+1)
         elif contador == 3:
+            Archivo3 = open("Información de la empresa.txt")
+            Informacion = Archivo3.read()
+            print("\n"+Informacion)
             Dato2 = input("\n\tEscriba el nombre de la empresa:")
             Dato[Indice]=("Empresa del transporte:"+Dato2+ "\n")
             return Transporte3_aux(Dato,Indice+1,contador+1)
@@ -485,6 +491,7 @@ Salidas: abre el archivo de texto "Información del transporte" y muestra su con
 Restricciones:No posee restricciones
 """
 def MostrarTransportes():
+    print("\n")
     Abrir = open("Información del transporte.txt","r")
     Abrir2 = Abrir.read()
     print(Abrir2)
@@ -537,7 +544,7 @@ def IncluirViaje():
     FechaYHoraLLegada = input("\n\tFecha y hora de llegada:")
     Archivo4 = open("Información del transporte.txt")
     Informacion = Archivo4.read()
-    print("\n\t"+Informacion)
+    print("\n"+Informacion)
     Empresa = input("\n\tEscriba el nombre de la empresa:")
     Transporte = input("\n\tEscriba la placa del transporte:")
     MontoAsientoVIP = input("\n\tMonto de asiento VIP:")
@@ -573,6 +580,7 @@ Restricciones:No posee restricciones
 """
 def EliminarViaje():
     NumeroViaje = input("\n\tEscriba el número del viaje:")
+    print("\n")
     Almacen = open("Información por viaje.txt")
     Borrar = Almacen.readlines()
     if("Número de viaje:"+NumeroViaje+ "\n")in Borrar:
@@ -582,16 +590,16 @@ def EliminarViaje():
         Abrir = open("Información por viaje.txt","w")
         Abrir.write(BorrarLineas)
         Abrir.close()
-        print("\n\t>>>>>El viaje ha sido eliminado<<<<<")
+        print("\n\t\t>>>>>El viaje ha sido eliminado<<<<<")
         print("\n")
         GestionViaje()
     else:
-        print("\n\t>>>>>El viaje no existe<<<<<")
+        print("\n\t\t>>>>>El viaje no existe<<<<<")
         print("\n")
         GestionViaje()
 
 def EliminarViaje_aux(Borrar,ContarLineas,contador):
-    if contador == 10:
+    if contador == 11:
         return TransformarString(Borrar)
     else:
         print(Borrar[ContarLineas].rstrip())
@@ -616,9 +624,12 @@ def ModificarViaje():
         Abrir = open("Información por viaje.txt","w")
         Abrir.write(TransformarString_aux(ViajeNuevo))
         Abrir.close()
-        print("\n\t>>>>>El viaje ha sido modificado<<<<<")
+        print("\n\t\t>>>>>El viaje ha sido modificado<<<<<")
         print("\n")
         GestionViaje()
+    else:
+        print("\n\t\t>>>>>El viaje no existe<<<<<")
+        return ModificarViaje()
 
 def Viaje2_aux(lista,Indice,contador):
     if contador == 10:
@@ -648,6 +659,9 @@ def Viaje3_aux(Dato,Indice,contador):
             Dato[Indice]=("Fecha y hora de llegada:"+Dato2+ "\n")
             return Viaje3_aux(Dato,Indice+1,contador+1)
         elif contador == 5:
+            Archivo4 = open("Información del transporte.txt")
+            Informacion = Archivo4.read()
+            print("\n"+Informacion)
             Dato2 = input("\n\tEscriba el nombre de la empresa:")
             Dato[Indice]=("Nombre de la empresa:"+Dato2+ "\n")
             return Viaje3_aux(Dato,Indice+1,contador+1)
@@ -676,6 +690,7 @@ Salidas: abre el archivo de texto "Información por viaje" y muestra su contenid
 Restricciones:No posee restricciones
 """
 def MostrarViajes():
+    print("\n")
     Abrir = open("Información por viaje.txt","r")
     Abrir2 = Abrir.read()
     print(Abrir2)
@@ -694,27 +709,28 @@ def ConsultarHistorial():
     print("\n\t1 - Rango de fecha de salida\n\n\t2 - Rango de fecha de llegada\n\n\t3 - Rango de fecha de la reservacion\n\n\t4 - Lugar de salida\n\n\t5 - Lugar de llegada\n\n\t6 - Salir")
     op = input("\n\t>>>>>Seleccione una de las siguientes opciones:")
     if(op == "1"):
-        return RangoSalida()
+        return RangoFechaSalida()
     elif(op == "2"):
-        return RangoLLegada()
+        return RangoFechaLLegada()
     elif(op == "3"):
         return RangoReservacion()
     elif(op == "4"):
-        return LugarSalida()
+        return LugarDeSalida()
     elif(op == "5"):
-        return LugarLLegada()
+        return LugarDeLLegada()
     elif(op == "6"):
         return menu2()
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
         return menu2()
 
-def RangoSalida():
+def RangoFechaSalida():
     Salida = input("\n\tRango de fecha de salida:")
-    datos = datos_aux()
-    Buscar(datos,Empresa,5,False,5)
     print("\n")
-    ConsultaViajes()
+    datos = datos_aux()
+    Buscar1(datos,Salida,5,False,5)
+    print("\n")
+    ConsultarHistorial()
 
 def datos_aux():
     Abrir = open("Información de reservación.txt")
@@ -722,8 +738,8 @@ def datos_aux():
     Abrir.close()
     return Almacenar
 
-def Buscar(reservacion,filtrar,indice,verificar,linea):
-    if indice > len(viajes):
+def Buscar1(reservacion,filtrar,indice,verificar,linea):
+    if indice > len(reservacion):
         if verificar :
             return print("\n\t>>>>>La reservacion ha sido encontrada<<<<<")
         else:
@@ -731,44 +747,48 @@ def Buscar(reservacion,filtrar,indice,verificar,linea):
     else:
         if filtrar in reservacion[indice]:
             BuscarReservacion(reservacion,indice-linea,0)
-            return Buscar(reservacion,filtrar,indice+15,True,linea)
+            return Buscar1(reservacion,filtrar,indice+15,True,linea)
         else:
-            return Buscar(reservacion,filtrar,indice+15,verificar,linea)
+            return Buscar1(reservacion,filtrar,indice+15,verificar,linea)
 
 def BuscarReservacion(reservacion,indice,contador):        
     if contador > 14:
         print("")
     else:
-        print(viajes[indice].rstrip())
+        print(reservacion[indice].rstrip())
         return BuscarReservacion(reservacion,indice+1,contador+1)
 
-def RangoLLegada():
+def RangoFechaLLegada():
     Llegada = input("\n\tRango de fecha de llegada:")
-    datos = datos_aux()
-    Buscar(datos,Empresa,7,False,7)
     print("\n")
-    ConsultaViajes()
+    datos = datos_aux()
+    Buscar1(datos,Llegada,7,False,7)
+    print("\n")
+    ConsultarHistorial()
 
 def RangoReservacion():
     Reservacion = input("\n\tRango de fecha de la reservacion:")
-    datos = datos_aux()
-    Buscar(datos,Empresa,11,False,11)
     print("\n")
-    ConsultaViajes()
+    datos = datos_aux()
+    Buscar1(datos,Reservacion,11,False,11)
+    print("\n")
+    ConsultarHistorial()
 
-def LugarSalida():
+def LugarDeSalida():
     LugarSalida = input("\n\tLugar de salida:")
-    datos = datos_aux()
-    Buscar(datos,Empresa,4,False,4)
     print("\n")
-    ConsultaViajes()
+    datos = datos_aux()
+    Buscar1(datos,LugarSalida,4,False,4)
+    print("\n")
+    ConsultarHistorial()
 
-def LugarLLegada():
+def LugarDeLLegada():
     LugarLLegada = input("\n\tLugar de llegada:")
-    datos = datos_aux()
-    Buscar(datos,Empresa,6,False,6)
     print("\n")
-    ConsultaViajes()
+    datos = datos_aux()
+    Buscar1(datos,LugarLLegada,6,False,6)
+    print("\n")
+    ConsultarHistorial()
 #---------------------------------------------------------------------------------------------------------------------
 """
 Nombre: Estadisticas()
@@ -778,10 +798,12 @@ Restricciones:no posee
 """
 #3.5
 def Estadisticas():
+    print("\n")
     Archivo = open("Información por viaje.txt")
     Leer = Archivo.read()
     print(Leer)
     Usuario = input("\n\t>>>>>Escriba el numero del viaje:")
+    print("\n")
     Abrir = open("Información por viaje.txt")
     Listas = Abrir.readlines()
     Indice = ubicarIndice(Listas,"Número de viaje:"+Usuario+"\n",0)
@@ -792,10 +814,9 @@ def Estadisticas():
     print(Listas[Indice+2])
     print(Listas[Indice+3])
     print(Listas[Indice+4])
-    Archivo2 = open("Información de reservación.txt")#reservacion
+    Archivo2 = open("Información de reservación.txt")
     Listas2 = Archivo2.readlines()
     Indice2 = ubicarIndice(Listas,"Número de viaje:"+Usuario+"\n",0)
-    print(Listas2)
     print("Cantidad de asientos clase VIP reservados:"+(Listas2[Indice2+8][36:-1])+"\n")
     print("Cantidad de asientos clase normal reservados:"+(Listas2[Indice2+9][41:-1])+"\n")
     print("Cantidad de asientos clase económica reservados:"+(Listas2[Indice2+10][43:-1])+"\n")
@@ -803,9 +824,9 @@ def Estadisticas():
     Archivo3 = open("Información del transporte.txt")
     Listas3 = Archivo3.readlines()
     Indice3 = ubicarIndice(Listas,"Placa del transporte:"+Usuario+"\n",0)
-    print(Listas3[Indice3+5])
-    print(Listas3[Indice3+6])
-    print(Listas3[Indice3+7])
+    print(Listas3[Indice3+5])#vip transporte
+    print(Listas3[Indice3+6])#normal transporte
+    print(Listas3[Indice3+7])#economico transporte
     Resta = int(Listas3[Indice3+5][31:-1])-(int(Listas2[Indice2+8][36:-1]))
     print("Cantidad de asientos clase VIP disponibles:"+str(Resta)+"\n")
     Resta2 = int(Listas3[Indice3+6][34:-1])-(int(Listas2[Indice2+9][41:-1]))
@@ -846,19 +867,20 @@ def ConsultaViajes():
     elif(op == "5"):
         return RangoLLegada()
     elif(op == "6"):
-        return ConsultaViajes()
+        return menu3()
     else:
         print("\n\t>>>>>Seleccione una de las siguientes opciones:")
         return menu3()
     
 def Empresa():
     Empresa = input("\n\tEmpresa:")
-    datos = datos1_aux()
+    print("\n")
+    datos = datos1()
     Buscar(datos,Empresa,5,False,5)
     print("\n")
     ConsultaViajes()
 
-def datos1_aux():
+def datos1():
     Abrir = open("Información por viaje.txt")
     Almacenar = Abrir.readlines()
     Abrir.close()
@@ -867,9 +889,9 @@ def datos1_aux():
 def Buscar(viajes,filtrar,indice,verificar,linea):
     if indice > len(viajes):
         if verificar :
-            return print("\n\t>>>>>El viaje fue encontrado<<<<<")
+            return print("\n\t\t>>>>>El viaje fue encontrado<<<<<")
         else:
-            print("\n\t>>>>>El viaje no fue encontrado<<<<<<")
+            print("\n\t\t>>>>>El viaje no fue encontrado<<<<<<")
     else:
         if filtrar in viajes[indice]:
             BuscarViaje(viajes,indice-linea,0)
@@ -886,28 +908,32 @@ def BuscarViaje(viajes,indice,contador):
 
 def LugarSalida():
     CiudadSalida = input("\n\tLugar de salida:")
-    datos = datos1_aux()
+    print("\n")
+    datos = datos1()
     Buscar(datos,CiudadSalida,1,False,1)
     print("\n")
     ConsultaViajes()
 
 def RangoSalida():
     FechaYHoraSalida = input("\n\tRango de salida:")
-    datos = datos1_aux()
+    print("\n")
+    datos = datos1()
     Buscar(datos,FechaYHoraSalida,2,False,2)
     print("\n")
     ConsultaViajes()
 
 def LugarLLegada():
     CiudadLLegada = input("\n\tLugar de llegada:")
-    datos = datos1_aux()
+    print("\n")
+    datos = datos1()
     Buscar(datos,CiudadLLegada,3,False,3)
     print("\n")
     ConsultaViajes()
 
 def RangoLLegada():
     FechaYHoraLLegada = input("\n\tRango de llegada:")
-    datos = datos1_aux()
+    print("\n")
+    datos = datos1()
     Buscar(datos,FechaYHoraLLegada,4,False,4)
     print("\n")
     ConsultaViajes()
@@ -921,10 +947,12 @@ Restricciones:validar que existan espacios disponibles en cada categoria
 #4.2
 def Reservacion():
     from datetime import datetime 
+    Archivo2 = open("Información de reservación.txt","a") 
+    Archivo2.close()
     print("\n\t\tInformación de reservación")
     Archivo3 = open("Información por viaje.txt")
     Informacion = Archivo3.read()
-    print("\n\t"+Informacion)
+    print("\n"+Informacion)
     Abrir = open("Información por viaje.txt")
     Archivo3 = Abrir.readlines()
     Viaje = input("\n\tDígite el número del viaje:")
@@ -949,9 +977,9 @@ def Reservacion():
             CantidadEconomico = input("\n\tCantidad de espacios a reservar económicos:")
             EconomicoDisponible = Archivo5[Indice+7][37:-1]
             if int(EconomicoDisponible) - int(CantidadEconomico)>= 0:
-                Monto = int(CantidadVIP)*int(Archivo3[Archivo4+7][27:-1])
-                Monto2 = int(CantidadNormal)*int(Archivo3[Archivo4+8][30:-1])
-                Monto3 = int(CantidadEconomico)*int(Archivo3[Archivo4+9][33:-1])
+                Monto = int(CantidadVIP)*(int(Archivo3[Archivo4+7][27:-1]))
+                Monto2 = int(CantidadNormal)*(int(Archivo3[Archivo4+8][30:-1]))
+                Monto3 = int(CantidadEconomico)*(int(Archivo3[Archivo4+9][33:-1]))
                 Archivo = "Información de reservación.txt"
                 Archivo2 = open(Archivo)
                 lineas = Archivo2.readlines()
@@ -974,7 +1002,7 @@ def Reservacion():
                 Archivo2.write("Identificador:"+str(Identificador)+"\n")
                 Archivo2.write("......................................................."+"\n")
                 Archivo2.close()
-                print("\n\t>>>>>Se ha realizado la reservación<<<<<")
+                print("\n\t\t>>>>>Se ha realizado la reservación<<<<<")
 
                 print("\n")
                 menu3()
@@ -1011,7 +1039,7 @@ def Cancelacion():
        Abrir = open("Información de reservación.txt","w")
        Abrir.write(Eliminar)
        Abrir.close()
-       print("\n\t>>>>>Se ha cancelado la recervacion<<<<<")
+       print("\n\t\t>>>>>Se ha cancelado la recervacion<<<<<")
        print("\n")
        menu3()
 
